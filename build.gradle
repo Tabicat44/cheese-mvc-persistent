@@ -1,4 +1,4 @@
-buildscript {
+/*buildscript {
 	ext {
 		springBootVersion = '1.5.2.RELEASE'
 	}
@@ -12,7 +12,13 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
+apply plugin: 'org.springframework.boot'*/
+
+plugins {
+	id 'org.springframework.boot' version '2.2.0.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+}
 
 jar {
 	baseName = 'cheese-mvc'
@@ -26,7 +32,21 @@ repositories {
 }
 
 
+group = 'org.launchcode'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+test {
+	useJUnitPlatform()
+}
+
+
 dependencies {
+
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
@@ -35,6 +55,9 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
+
 bootRun {
-	addResources = true
+	sourceResources sourceSets.main
+
+//	addResources = true
 }
