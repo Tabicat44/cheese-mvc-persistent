@@ -1,15 +1,14 @@
 package org.launchcode.models.data;
 
-import org.launchcode.models.Category;
+import org.launchcode.models.Cheese;
+import org.launchcode.models.Menu;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-//import main.java.org.launchcode.models;
-
 
 import javax.transaction.Transactional;
-
+import java.awt.*;
 
 @Repository
 @Transactional
-public interface CategoryDao extends CrudRepository<Category, Integer> {
+public interface MenuDao extends CrudRepository<Menu, Integer> {
 }

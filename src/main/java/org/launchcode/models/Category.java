@@ -27,6 +27,7 @@ public class Category {
 
     public Category() { }
 
+
     public Category(String givenName) {this.name = givenName; }
 
     public int getId() {
